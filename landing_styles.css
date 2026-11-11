@@ -1,0 +1,94 @@
+/* AgroEnsaios IA — Landing independente, somente interface didática.
+   Referências: tutorial Streamlit + SOJAI + Carbono ISDA (PDFs anexados).
+   Esquema de parcelas é ILUSTRATIVO; não representa ensaio real. */
+:root {
+  --ag-bg: #0b1422;
+  --ag-ink: #eaf3f9;
+  --ag-muted: #abc0ce;
+  --ag-green: #65e4b1;
+  --ag-blue: #86baff;
+  --ag-border: #2c4256;
+}
+[data-testid="stHeader"] {background: transparent;}
+.block-container {max-width: 1250px; padding-top: 1.55rem; padding-bottom: 1.35rem;}
+h1,h2,h3,h4 {letter-spacing: -.026em;}
+.stMarkdown h2 {font-size: clamp(1.65rem, 2.45vw, 2.2rem); font-weight: 750;}
+.ag-topline {display:flex; align-items:center; justify-content:space-between; gap:16px; margin:1px 0 20px;}
+.ag-brand {color:#f4fbff; font-size:1.03rem; font-weight:830; letter-spacing:.05em;}
+.ag-brand b,.ag-footer b {color:var(--ag-green);}
+.ag-brand-symbol {color:var(--ag-green); margin-right:6px;}
+.ag-topstate {font-size:.68rem; font-weight:700; letter-spacing:.10em; color:#a4b9ca; white-space:nowrap;}
+.ag-topstate i {display:inline-block; vertical-align:middle; width:5px; height:5px;
+  border-radius:100%; background:var(--ag-green); margin:0 8px;}
+.ag-kicker {font-size:.71rem; letter-spacing:.125em; font-weight:820; color:var(--ag-green); margin:0 0 20px;}
+.ag-kicker span {color:#68839b; margin:0 8px;}
+.ag-hero-title {font-size:clamp(2.08rem, 3.85vw, 3.7rem)!important; line-height:1.12;
+  letter-spacing:-.045em; font-weight:840; color:#f2f9ff; margin:0 0 18px;}
+.ag-hero-title span {color:var(--ag-green);}
+.ag-hero-copy {font-size:1.01rem; line-height:1.75; color:#b9ccdb; max-width:610px; margin-bottom:22px;}
+.ag-chip-row {display:flex; gap:7px; flex-wrap:wrap; margin:5px 0 22px;}
+.ag-chip-row span {font-size:.60rem; font-weight:800; color:#a8bed0; border:1px solid #34485c;
+  padding:6px 9px; border-radius:6px; letter-spacing:.10em; background:#101f2e;}
+.ag-tech-panel {background:linear-gradient(165deg,#10283a,#0d1e2e 68%,#132638); border:1px solid #385468;
+  padding:22px; border-radius:17px; box-shadow:0 20px 36px #050e1a40;}
+.ag-panel-head {display:flex; justify-content:space-between; align-items:center; gap:14px;}
+.ag-panel-head strong {display:block; margin-top:6px; font-size:1.24rem; font-weight:740; color:#edf8ff;}
+.ag-mini-kicker {font-size:.61rem; letter-spacing:.14em; font-weight:850; color:#7fdbb9;}
+.ag-panel-mark {border:1px solid #477168; color:#80eabf; font-weight:800; border-radius:7px;
+  padding:6px 11px; font-size:.86rem; white-space:nowrap;}
+.ag-panel-rule {height:1px; background:linear-gradient(90deg,#38536a,transparent); margin:17px 0;}
+.ag-panel-bar {display:flex; justify-content:space-between; gap:10px; color:#94aeba; font-weight:800;
+  font-size:.61rem; letter-spacing:.09em; margin-bottom:10px;}
+.ag-plot-wrap {display:grid; grid-template-columns:18px minmax(0,1fr); column-gap:8px; align-items:stretch;}
+.ag-axis {color:#648e9e; font-weight:700; font-size:.58rem; letter-spacing:.12em;}
+.ag-axis-y {writing-mode:vertical-rl; transform:rotate(180deg); text-align:center;}
+.ag-plot-grid {display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:6px; padding:12px;
+  border:1px solid #2f5060; border-radius:11px; background:repeating-linear-gradient(0deg,#163348bb,#163348bb 1px,#11293b 1px,#11293b 25px);}
+.ag-plot-cell {display:block; height:23px; border-radius:4px; position:relative; box-shadow:inset 0 1px #ffffff12;}
+.ag-plot-exp {background:linear-gradient(150deg,#3c9a82,#245b6b); border:1px solid #4bb796;}
+.ag-plot-check {background:linear-gradient(135deg,#3c77c0,#20486c); border:1px solid #6c9cd9;}
+.ag-plot-missing {background:repeating-linear-gradient(135deg,#263744,#263744 3px,#192d3a 3px,#192d3a 6px);
+  border:1px dashed #607282;}
+.ag-plot-legend {display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end; margin:13px 0 18px;}
+.ag-plot-legend span {color:#9eb8c7; font-size:.67rem; white-space:nowrap;}
+.ag-dot {display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:5px;}
+.ag-dot-exp {background:#55b799;} .ag-dot-check {background:#6697db;} .ag-dot-missing {background:#718292;}
+.ag-panel-data {display:grid; grid-template-columns:repeat(4,1fr); gap:5px; padding-top:13px; border-top:1px solid #274356;}
+.ag-panel-data span {text-align:center; padding:7px 2px; font-size:.54rem; font-weight:780; letter-spacing:.045em;
+  border:1px solid #38536a; background:#142d3d; border-radius:5px; color:#a9dbcc;}
+.ag-eyebrow {font-size:.71rem; color:#87e0c0; font-weight:850; letter-spacing:.13em; margin:38px 0 7px;}
+.ag-eyebrow span {display:inline-block; margin-right:9px; color:#a6bccc;}
+.ag-section-lead {color:#acc3d0; line-height:1.72; font-size:.97rem; max-width:930px; margin-top:-6px; margin-bottom:18px;}
+.ag-feature {border-radius:15px; border:1px solid var(--ag-border); background:linear-gradient(145deg,#18293b,#142436);
+  padding:22px; margin-top:6px; min-height:193px;}
+.ag-feature-head {display:flex; align-items:center; justify-content:space-between;}
+.ag-feature-head span {font-size:1.3rem; font-weight:850; color:var(--ag-green);}
+.ag-feature-head small {font-size:.62rem; font-weight:800; letter-spacing:.08em; color:#91adc0;}
+.ag-feature h3 {font-size:1.14rem; color:#f1f8fd; margin:16px 0 9px;}
+.ag-feature p {font-size:.86rem; line-height:1.65; color:#b1c5d3; margin:0;}
+.ag-case-aside {border-left:3px solid var(--ag-green); background:linear-gradient(100deg,#182f3b,#142438);
+  border-radius:0 11px 11px 0; padding:20px 19px; margin-top:7px;}
+.ag-case-aside span {color:#75ddba; font-size:.63rem; font-weight:850; letter-spacing:.12em;}
+.ag-case-aside p {color:#dfecf6; font-size:.92rem; line-height:1.64; margin:10px 0 0;}
+.ag-stat {border:1px solid #2d4356; border-radius:12px; background:#132439; padding:18px 13px;
+  min-height:125px; display:flex; flex-direction:column; justify-content:space-between; margin:12px 0 2px;}
+.ag-stat strong {color:#a0f2d2; font-size:clamp(1.55rem,2.4vw,2.1rem); letter-spacing:-.05em; line-height:1.05;}
+.ag-stat span {color:#afc4d0; font-size:.77rem; line-height:1.37; padding-top:11px;}
+.ag-step {min-height:152px; border:1px solid #31485a; border-radius:13px; background:linear-gradient(140deg,#162d3d,#122334); padding:18px;}
+.ag-step span {display:block; font-size:.74rem; font-weight:850; color:#77d9b9; letter-spacing:.1em; margin-bottom:11px;}
+.ag-step strong {font-size:1rem; color:#f0f8fe;} .ag-step p {font-size:.77rem; color:#acc4d1; line-height:1.55; margin:7px 0 0;}
+.ag-person {min-height:90px; display:flex; align-items:center; justify-content:center; border:1px solid #30495c;
+  background:#14283b; border-radius:13px; padding:20px; margin-top:6px;}
+.ag-person strong {font-size:1rem; color:#eff7fc; line-height:1.37; text-align:center;}
+.ag-bottom-title {font-size:clamp(1.32rem,2.35vw,1.9rem); line-height:1.28; font-weight:760;
+  text-align:center; color:#f0f8fd; letter-spacing:-.03em; margin:56px auto 0; max-width:920px;}
+.ag-bottom-copy {text-align:center; font-size:.95rem; line-height:1.72; color:#abc4d1; max-width:920px; margin:14px auto 22px;}
+.ag-footer {display:flex; justify-content:space-between; flex-wrap:wrap; gap:18px;
+  padding:24px 0 0; border-top:1px solid #2a4051; margin-top:50px; font-size:.73rem; color:#99afbd;}
+@media(max-width:880px) {
+  .block-container {padding-top:.9rem;}
+  .ag-topstate {display:none;}
+  .ag-feature,.ag-step {min-height:0;}
+  .ag-plot-grid {gap:4px; padding:8px;}
+  .ag-plot-cell {height:18px;}
+}
